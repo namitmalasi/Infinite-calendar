@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { X, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import { parseJournalDate, formatDate } from "../utils/dateUtils";
+import { parseJournalDate, formatDateLong } from "../utils/dateUtils";
 
 export const JournalCard = ({
   entry,
@@ -117,9 +117,9 @@ export const JournalCard = ({
     return "text-red-500";
   };
 
-  const formatDate = (dateString) => {
+  const formatEntryDate = (dateString) => {
     const date = parseJournalDate(dateString);
-    return formatDate(date);
+    return formatDateLong(date);
   };
 
   if (!isOpen) return null;
@@ -169,7 +169,7 @@ export const JournalCard = ({
           {/* Date and Rating */}
           <div className="flex items-center justify-between mb-4">
             <span className="text-sm text-gray-600">
-              {formatDate(entry.date)}
+              {formatEntryDate(entry.date)}
             </span>
             <div className="flex items-center space-x-1">
               <Star

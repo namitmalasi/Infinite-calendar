@@ -10,15 +10,17 @@ export const JournalDayEntry = ({ entry, onClick }) => {
 
   return (
     <div
-      className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-md p-2 cursor-pointer 
+      className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-sm p-1.5 cursor-pointer 
                  hover:from-purple-100 hover:to-pink-100 transition-all duration-200 
-                 hover:shadow-md transform hover:-translate-y-0.5 border border-purple-100"
+                 hover:shadow-sm border border-purple-100 text-xs overflow-hidden"
       onClick={onClick}
     >
-      <div className="flex items-center justify-between mb-1">
+      <div className="flex items-center justify-between mb-0.5">
         <div className="flex items-center space-x-1">
           <Star
-            className={`w-3 h-3 fill-current ${getRatingColor(entry.rating)}`}
+            className={`w-2.5 h-2.5 fill-current ${getRatingColor(
+              entry.rating
+            )}`}
           />
           <span className="text-xs font-medium text-gray-700">
             {entry.rating}
@@ -26,23 +28,25 @@ export const JournalDayEntry = ({ entry, onClick }) => {
         </div>
       </div>
 
-      <div className="text-xs text-gray-600 line-clamp-2 leading-tight">
-        {entry.description.substring(0, 60)}...
+      <div className="text-xs text-gray-600 leading-tight mb-0.5 overflow-hidden">
+        <div className="line-clamp-1">
+          {entry.description.substring(0, 40)}...
+        </div>
       </div>
 
-      <div className="mt-1 flex flex-wrap gap-1">
-        {entry.categories.slice(0, 2).map((category, index) => (
+      <div className="flex flex-wrap gap-0.5">
+        {entry.categories.slice(0, 1).map((category, index) => (
           <span
             key={index}
-            className="inline-block bg-purple-200 text-purple-800 text-xs px-1.5 py-0.5 
-                       rounded-full font-medium"
+            className="inline-block bg-purple-200 text-purple-800 text-xs px-1 py-0.5 
+                       rounded-full font-medium truncate max-w-full"
           >
             {category}
           </span>
         ))}
-        {entry.categories.length > 2 && (
+        {entry.categories.length > 1 && (
           <span className="text-xs text-gray-500">
-            +{entry.categories.length - 2}
+            +{entry.categories.length - 1}
           </span>
         )}
       </div>
