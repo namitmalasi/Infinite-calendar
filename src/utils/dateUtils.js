@@ -7,8 +7,6 @@ import {
   addMonths,
   subMonths,
   isSameDay,
-  isWithinInterval,
-  startOfDay,
 } from "date-fns";
 
 export const parseJournalDate = (dateString) => {
@@ -97,10 +95,4 @@ export const getMonthNameShort = (month) => {
 export const getDayName = (dayIndex) => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[dayIndex];
-};
-
-export const getCurrentVisibleMonth = (scrollTop, monthElements) => {
-  // This function can be enhanced with intersection observer
-  // For now, it's a placeholder that can be implemented based on scroll calculations
-  return null;
 };
